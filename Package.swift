@@ -7,7 +7,7 @@ import CompilerPluginSupport
 let package = Package(
     name: "Catamaran",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v11),
         .custom("Windows", versionString: "5"),
         .custom("Linux", versionString: "5")
     ],

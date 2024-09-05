@@ -15,5 +15,11 @@ struct CatamaranMacrosPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         ComponentMacroImplementation.self,
         DistantMacroImplementation.self,
+        StaticMacroImplementation.self,
+        MacMacroImplementation.self,
+        LinuxMacroImplementation.self,
+        WindowsMacroImplementation.self,
+        PredicateMacroImplementation.self,
+        TransientMacroImplementation.self
     ]
 }

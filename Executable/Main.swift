@@ -8,8 +8,8 @@
 import Catamaran
 
 @main
-class Program {
+class Main {
     static func main() {
-        Window(name: "This is my Window").show()
+        // Let's test
     }
 }

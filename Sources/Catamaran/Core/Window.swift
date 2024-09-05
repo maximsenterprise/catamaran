@@ -11,12 +11,12 @@ public class Window {
     let name: String
     public init(name: String) {
         self.name = name
-        component = FrameComponent(name: name)
     }
     
     public func show() {
-        execute(distant: component)
+        component = FrameComponent(name: name, parent: self)
+        execute(distant: component!)
     }
     
-    let component: FrameComponent
+    var component: FrameComponent? = nil
 }
