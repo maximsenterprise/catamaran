@@ -53,7 +53,7 @@ class ImageViewController: NSViewController {
 }
 
 @Component
-public class ImageComponent: Component {
+public class ImageComponent {
     let source: String
     public func render_linux(_ window: Window) {
         

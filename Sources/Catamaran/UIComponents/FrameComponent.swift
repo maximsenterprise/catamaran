@@ -12,7 +12,7 @@ import Cocoa
 
 /// A Component that represents the boundries and the core of a Catamaran Window
 @DistantComponent
-public class FrameComponent: DistantComponent {
+public class FrameComponent {
     public var window: NSWindow?
     public var windowComponent: Window
     #if os(macOS)

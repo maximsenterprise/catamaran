@@ -11,10 +11,16 @@ public class Window {
     let name: String
     public init(name: String) {
         self.name = name
+        defer {
+            set_component()
+        }
+    }
+    
+    private func set_component() {
+        component = FrameComponent(name: name, parent: self)
     }
     
     public func show() {
-        component = FrameComponent(name: name, parent: self)
         execute(distant: component!)
     }
     

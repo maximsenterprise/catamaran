@@ -79,7 +79,8 @@ public struct AnyNSViewRepresentable: NSViewRepresentable {
     }
 }
 
-public struct ButtonComponent: PredicateComponent {
+@PredicateComponent
+public struct ButtonComponent {
     @ComponentBuilder public var content: () -> [any Component]
     public var perform: () -> ()
     
@@ -110,6 +111,4 @@ public struct ButtonComponent: PredicateComponent {
     }
     
     public var result: PredicateResult = .off
-    public var component_name: String = "ButtonComponent"
-    public var component_type: ComponentType = .transientComponent
 }

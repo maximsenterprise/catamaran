@@ -53,7 +53,7 @@ class IconViewController: NSViewController {
 }
 
 @Component
-public class IconComponent: Component {
+public class IconComponent {
     
     let iconName: String
     public func render_linux(_ window: Window) {

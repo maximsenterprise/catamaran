@@ -17,19 +17,8 @@ import Cocoa
 /// func render_windows() -> Void
 /// func render_macOS() -> NSView
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
+
 public protocol Component {
-    /// Variable that represents the name of the following Component that will be shown in the Console
-    var component_name: String { get }
-    /// Variable that represents the type of Component
-    var component_type: ComponentType { get }
-    
     /// Function that represents the lifetime of a Component. It will be runned every frame
     func render_linux(_ window: Window) -> Void
     func render_macOS(_ window: Window) -> NSView
@@ -56,13 +45,6 @@ public enum ComponentType {
 /// ```swift
 /// func render() -> Void
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
 public protocol MacComponent: Component {
     
 }
@@ -73,13 +55,6 @@ public protocol MacComponent: Component {
 ///
 /// ```swift
 /// func render() -> Void
-/// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
 /// ```
 public protocol LinuxComponent: Component {
     
@@ -92,13 +67,6 @@ public protocol LinuxComponent: Component {
 /// ```swift
 /// func render() -> Void
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
 public protocol WindowsComponent: Component {
     
 }
@@ -110,17 +78,7 @@ public protocol WindowsComponent: Component {
 /// ```swift
 /// func render(_ window: Window) -> Void
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
 public protocol StaticComponent {
-    var component_name: String { get }
-    var component_type: ComponentType { get }
-    
     func render(_ window: Window) -> Void
 }
 
@@ -134,13 +92,6 @@ public protocol StaticComponent {
 /// func render_macOS(_ window: Window) -> NSView
 /// func one_frame(_ window: Window) -> Void
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
 public protocol TransientComponent: Component {
     func one_frame(_ window: Window) -> Void
 }
@@ -153,16 +104,7 @@ public protocol TransientComponent: Component {
 /// func start() -> Void
 /// optional func end() -> Void
 /// ```
-///
-/// And the following variables:
-///
-/// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
-/// ```
 public protocol DistantComponent {
-    var component_name: String { get }
-    var component_type: ComponentType { get }
     func start() -> Void
     func end() -> Void
 }
@@ -180,8 +122,6 @@ public protocol DistantComponent {
 /// And the following variables:
 ///
 /// ```swift
-/// var component_name: String { get }
-/// var component_type: ComponentType { get }
 /// var result: PredicateResult { get }
 /// ```
 public protocol PredicateComponent: Component {

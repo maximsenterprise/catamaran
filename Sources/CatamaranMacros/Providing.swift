@@ -20,6 +20,6 @@ struct CatamaranMacrosPlugin: CompilerPlugin {
         LinuxMacroImplementation.self,
         WindowsMacroImplementation.self,
         PredicateMacroImplementation.self,
-        TransientMacroImplementation.self
+        TransientMacroImplementation.self,
     ]
 }

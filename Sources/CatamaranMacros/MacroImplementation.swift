@@ -10,124 +10,58 @@ import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 import SwiftCompilerPlugin
 
-public struct ComponentMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .component "),
-        ]
+public struct ComponentMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): Component {}")
+        return [equatableExtension]
     }
 }
 
-
-public struct DistantMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .distantComponent "),
-        ]
+public struct DistantMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): DistantComponent {}")
+        return [equatableExtension]
     }
 }
 
-public struct PredicateMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .predicateComponent "),
-        ]
+public struct StaticMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): StaticComponent {}")
+        return [equatableExtension]
     }
 }
 
-
-public struct TransientMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .transientComponent "),
-        ]
+public struct MacMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): MacComponent {}")
+        return [equatableExtension]
     }
 }
 
-public struct StaticMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .staticComponent "),
-        ]
+public struct LinuxMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): LinuxComponent {}")
+        return [equatableExtension]
     }
 }
 
-public struct WindowsMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .windowsComponent "),
-        ]
+public struct WindowsMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): WindowsComponent {}")
+        return [equatableExtension]
     }
 }
 
-public struct LinuxMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .linuxComponent "),
-        ]
+public struct PredicateMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): PredicateComponent {}")
+        return [equatableExtension]
     }
 }
 
-public struct MacMacroImplementation: MemberMacro {
-    public static func expansion(of node: AttributeSyntax, providingMembersOf declaration: some DeclGroupSyntax, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-        guard let type = declaration.as(ClassDeclSyntax.self) else {
-            fatalError("The type which this macro is attached is not a class")
-        }
-        
-        let name: String = type.name.text
-        
-        return [
-            DeclSyntax(stringLiteral: "public var component_name: String = \"\(name)\" "),
-            DeclSyntax(stringLiteral: "public var component_type: ComponentType = .macComponent "),
-        ]
+public struct TransientMacroImplementation: ExtensionMacro {
+    public static func expansion(of node: AttributeSyntax, attachedTo declaration: some DeclGroupSyntax, providingExtensionsOf type: some TypeSyntaxProtocol, conformingTo protocols: [TypeSyntax], in context: some MacroExpansionContext) throws -> [ExtensionDeclSyntax] {
+        let equatableExtension = try ExtensionDeclSyntax("extension \(type.trimmed): TransientComponent {}")
+        return [equatableExtension]
     }
 }

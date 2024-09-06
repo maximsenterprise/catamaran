@@ -80,7 +80,7 @@ struct FinalTextView: View {
 ///
 /// In macOS this component renders a `Text` into the screen. This uses the `SwiftUI` library with a `NSViewController` and `NSHostingView`
 @Component
-public class TextComponent: Component {
+public class TextComponent {
     let text: String
     var boldVar: Bool = false
     var italicVar: Bool = false
@@ -108,7 +108,7 @@ public class TextComponent: Component {
     
     public func render_windows(_ window: Window) {}
     
-    public init(text: String) {
+    public init(_ text: String) {
         self.text = text
     }
 }
