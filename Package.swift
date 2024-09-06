@@ -35,6 +35,7 @@ let package = Package(
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
               ]),
-        .executableTarget(name: "CatamaranTestClient", dependencies: ["Catamaran"], path: "Executable/")
+        .executableTarget(name: "CatamaranCLI", dependencies: ["Catamaran"], path: "Tools"),
+        .executableTarget(name: "CatamaranTestClient", dependencies: ["Catamaran"], path: "Executable", exclude: ["CatamaranTest.app", "Info.plist"])
     ]
 )

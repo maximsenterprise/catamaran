@@ -1,0 +1,6 @@
+{
+	"name": "CatamaranTest",
+	"executable": "./.build/debug/CatamaranTestClient",
+	"outPath": "./Executable",
+	"info": "./Executable/Info.plist"
+}
